@@ -19,10 +19,35 @@ import { Meteors } from "./ui/meteors";
 import { MagicCard } from "./ui/magic-card";
 import { BorderBeam } from "./ui/border-beam";
 import { GridPattern } from "./ui/grid-pattern";
+import { LineShadowText } from "./ui/line-shadow-text";
 
 const LandingPage = () => {
   return (
     <div className="min-h-screen bg-white dark:bg-slate-950">
+      {/* Navbar */}
+      <div className="fixed top-4 left-0 right-0 z-50 flex justify-center px-4">
+        <nav className="flex w-full max-w-7xl items-center justify-between rounded-full border border-slate-200/50 bg-white/80 px-6 py-3 backdrop-blur-md shadow-lg dark:border-slate-800/50 dark:bg-slate-900/80">
+          <a href="#" className="text-xl font-bold">
+            <AnimatedGradientText
+              className="bg-gradient-to-r from-blue-600 via-indigo-600 to-cyan-500"
+              speed={0.8}
+            >
+              Forge
+            </AnimatedGradientText>
+          </a>
+          <motion.a
+            href="https://github.com/rayhaanfarooq/Forge"
+            target="_blank"
+            rel="noopener noreferrer"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="flex cursor-pointer items-center gap-2 rounded-lg bg-slate-900 px-4 py-2 text-white transition-all hover:bg-slate-800 dark:bg-slate-100 dark:text-slate-900 dark:hover:bg-slate-200"
+          >
+            <Github className="h-4 w-4" />
+            <span className="text-sm">Get Started For Free</span>
+          </motion.a>
+        </nav>
+      </div>
       {/* Hero Section */}
       <section className="relative overflow-visible px-4 py-20 md:py-32">
         <div className="absolute inset-0 bg-gradient-to-br from-blue-50/50 via-transparent to-cyan-50/50 dark:from-blue-950/20 dark:via-transparent dark:to-cyan-950/20" />
@@ -50,7 +75,8 @@ const LandingPage = () => {
 
             <h1 className="mb-6 overflow-visible text-5xl font-bold tracking-tight leading-[1.2] md:text-7xl md:leading-[1.2] lg:text-8xl lg:leading-[1.2]">
               <span className="block text-slate-900 dark:text-slate-100">
-                Ship Faster with
+                Ship <LineShadowText shadowColor="black">Faster</LineShadowText>{" "}
+                with
               </span>
               <AnimatedGradientText
                 className="block overflow-visible pb-2 md:pb-3 lg:pb-4 bg-gradient-to-r from-blue-600 via-indigo-600 to-cyan-500"

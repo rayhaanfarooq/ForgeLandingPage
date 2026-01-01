@@ -1,10 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 export default {
   darkMode: ["class"],
-  content: [
-    "./index.html",
-    "./src/**/*.{js,ts,jsx,tsx}",
-  ],
+  content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
       colors: {
@@ -47,10 +44,15 @@ export default {
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
       },
+
+      // ✅ ONE animation object
       animation: {
-        "shimmer": "shimmer 2s linear infinite",
-        "gradient": "gradient 8s linear infinite",
+        shimmer: "shimmer 2s linear infinite",
+        gradient: "gradient 8s linear infinite",
+        "line-shadow": "line-shadow 8s linear infinite",
       },
+
+      // ✅ ONE keyframes object
       keyframes: {
         shimmer: {
           "0%": { transform: "translateX(-100%)" },
@@ -60,9 +62,12 @@ export default {
           "0%, 100%": { backgroundPosition: "0% 50%" },
           "50%": { backgroundPosition: "100% 50%" },
         },
+        "line-shadow": {
+          "0%": { backgroundPosition: "0% 0%" },
+          "100%": { backgroundPosition: "100% 100%" },
+        },
       },
     },
   },
   plugins: [],
-}
-
+};
