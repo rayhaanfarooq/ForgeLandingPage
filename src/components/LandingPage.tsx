@@ -69,7 +69,7 @@ const LandingPage = () => {
             >
               <Sparkles className="h-4 w-4 text-blue-500" />
               <span className="text-slate-700 dark:text-slate-300">
-                Opinionated Git workflows with AI-generated tests
+                Simplified Git commands with AI-generated tests
               </span>
             </motion.div>
 
@@ -87,9 +87,9 @@ const LandingPage = () => {
             </h1>
 
             <p className="mx-auto mb-10 max-w-2xl text-lg leading-relaxed text-slate-600 md:text-xl dark:text-slate-400">
-              Forge eliminates Git workflow friction by combining opinionated
-              branching, automatic rebasing, and AI-generated tests — so
-              developers ship faster with confidence.
+              Don’t let Git commands or testing slow you down. Forge simplifies
+              your workflow by simplifying your Git commands and AI-generated
+              tests so you can ship at lightning speed.
             </p>
 
             <div className="relative z-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
