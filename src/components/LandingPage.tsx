@@ -209,14 +209,15 @@ const LandingPage = () => {
 
               <div className="mt-4 inline-flex items-center gap-2 rounded-full border border-[rgba(18,22,29,0.08)] bg-[rgba(255,250,246,0.82)] px-4 py-2 text-sm text-[#5c5552]">
                 <Github className="h-4 w-4 text-[var(--brand-deep)]" />
-                <span>
-                  Open source on GitHub. Contributions welcome.
-                </span>
+                <span>Open source on GitHub. Contributions welcome.</span>
               </div>
 
               <div className="mt-10 grid gap-4 sm:grid-cols-3">
                 {heroStats.map((stat) => (
-                  <div key={stat.value} className="surface-card rounded-[1.5rem] p-5">
+                  <div
+                    key={stat.value}
+                    className="surface-card rounded-[1.5rem] p-5"
+                  >
                     <p className="mono-label text-[11px] text-muted-foreground">
                       {stat.label}
                     </p>
@@ -482,10 +483,9 @@ const LandingPage = () => {
                 </h2>
               </div>
               <p className="max-w-2xl text-lg leading-8 text-[#55606c]">
-                The interface stays neutral, the hierarchy stays strong, and
-                the hot-pink accent only appears where depth or status matters.
-                That keeps Forge confident, structured, and unmistakably its
-                own.
+                The interface stays neutral, the hierarchy stays strong, and the
+                hot-pink accent only appears where depth or status matters. That
+                keeps Forge confident, structured, and unmistakably its own.
               </p>
             </div>
 
