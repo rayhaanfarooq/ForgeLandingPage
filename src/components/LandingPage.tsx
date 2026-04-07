@@ -1,482 +1,580 @@
-import { motion } from "framer-motion";
 import {
-  Zap,
-  Shield,
-  Code,
-  CheckCircle2,
-  XCircle,
-  Rocket,
-  Sparkles,
-  Terminal,
-  GitMerge,
-  TestTube,
   ArrowRight,
+  Bot,
+  CheckCircle2,
+  ChevronRight,
   Github,
-  Heart,
+  GitBranch,
+  LayoutDashboard,
+  ShieldCheck,
 } from "lucide-react";
-import { AnimatedGradientText } from "./ui/animated-gradient-text";
-import { Meteors } from "./ui/meteors";
-import { MagicCard } from "./ui/magic-card";
-import { BorderBeam } from "./ui/border-beam";
-import { GridPattern } from "./ui/grid-pattern";
-import { LineShadowText } from "./ui/line-shadow-text";
+import { AnvilIcon } from "./ui/anvil-icon";
+
+const navItems = [
+  { label: "Product", href: "#product" },
+  { label: "Workflow", href: "#workflow" },
+  { label: "Platform", href: "#platform" },
+  { label: "Start", href: "#start" },
+];
+
+const heroStats = [
+  {
+    label: "Workflow",
+    value: "1 command",
+    detail: "sync, validate, and land work without hopping between tools",
+  },
+  {
+    label: "Coverage",
+    value: "AI drafted",
+    detail: "test suggestions generated from the actual code diff",
+  },
+  {
+    label: "History",
+    value: "Linear first",
+    detail: "rebasing and merge prep designed to keep branches readable",
+  },
+];
+
+const valueCards = [
+  {
+    title: "Reduce Git overhead",
+    description:
+      "Forge turns repetitive branch maintenance into a cleaner default, so engineering time goes back into shipping product.",
+  },
+  {
+    title: "Bring quality closer to the work",
+    description:
+      "AI-assisted test drafting helps teams catch the obvious gaps while context is still fresh and easy to act on.",
+  },
+  {
+    title: "Keep release context visible",
+    description:
+      "Checks, summaries, and merge readiness sit in one place instead of being spread across terminal history and team memory.",
+  },
+];
+
+const workflowSteps = [
+  {
+    title: "Sync branch state",
+    description:
+      "Start from an up-to-date branch without the usual rebasing ceremony or command memorization.",
+  },
+  {
+    title: "Draft targeted tests",
+    description:
+      "Forge reads the diff and suggests coverage areas that match the change instead of a generic checklist.",
+  },
+  {
+    title: "Review merge readiness",
+    description:
+      "Validation, branch status, and release notes are packaged into a calmer final step before shipping.",
+  },
+];
+
+const platformCards = [
+  {
+    icon: GitBranch,
+    title: "Opinionated branch hygiene",
+    description:
+      "Strong defaults help teams avoid tangled histories and review fatigue before they build up.",
+  },
+  {
+    icon: Bot,
+    title: "AI where it actually helps",
+    description:
+      "Use machine help for repetitive quality work, not for bloating a simple release flow.",
+  },
+  {
+    icon: LayoutDashboard,
+    title: "One release workspace",
+    description:
+      "See sync state, validation, suggested tests, and final readiness in a single product surface.",
+  },
+  {
+    icon: ShieldCheck,
+    title: "Local-first confidence",
+    description:
+      "Keep speed high and code private while still adding the process discipline teams usually bolt on later.",
+  },
+];
+
+const proofPoints = [
+  "Built for startup shipping velocity",
+  "Designed for small engineering teams",
+  "Made for teams tired of Git cleanup",
+  "Open source on GitHub",
+];
+
+const releaseItems = [
+  "Branch synced with latest main",
+  "Regression coverage drafted from diff",
+  "Validation suite passed",
+  "Release summary prepared",
+];
 
 const LandingPage = () => {
   return (
-    <div className="min-h-screen bg-white dark:bg-slate-950">
-      {/* Navbar */}
-      <div className="fixed top-4 left-0 right-0 z-50 flex justify-center px-4">
-        <nav className="flex w-full max-w-7xl items-center justify-between rounded-full border border-slate-200/50 bg-white/80 px-6 py-3 backdrop-blur-md shadow-lg dark:border-slate-800/50 dark:bg-slate-900/80">
-          <a href="#" className="text-xl font-bold">
-            <AnimatedGradientText
-              className="bg-gradient-to-r from-blue-600 via-indigo-600 to-cyan-500"
-              speed={0.8}
-            >
-              Forge
-            </AnimatedGradientText>
-          </a>
-          <motion.a
-            href="https://github.com/rayhaanfarooq/Forge"
-            target="_blank"
-            rel="noopener noreferrer"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="flex cursor-pointer items-center gap-2 rounded-lg bg-slate-900 px-4 py-2 text-white transition-all hover:bg-slate-800 dark:bg-slate-100 dark:text-slate-900 dark:hover:bg-slate-200"
-          >
-            <Github className="h-4 w-4" />
-            <span className="text-sm">Get Started For Free</span>
-          </motion.a>
-        </nav>
+    <div className="min-h-screen bg-background text-foreground">
+      <div className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-[44rem] overflow-hidden">
+        <div className="hero-wash absolute inset-0" />
+        <div className="absolute right-[-10rem] top-[-6rem] h-[26rem] w-[26rem] rounded-full bg-[rgba(235,75,147,0.15)] blur-3xl" />
+        <div className="absolute left-[-8rem] top-28 h-[20rem] w-[20rem] rounded-full bg-[rgba(126,103,89,0.08)] blur-3xl" />
       </div>
-      {/* Hero Section */}
-      <section className="relative overflow-visible px-4 py-20 md:py-32">
-        <div className="absolute inset-0 bg-gradient-to-br from-blue-50/50 via-transparent to-cyan-50/50 dark:from-blue-950/20 dark:via-transparent dark:to-cyan-950/20" />
-        <GridPattern className="opacity-20 dark:opacity-10" />
-        <Meteors number={20} />
 
-        <div className="container mx-auto max-w-6xl">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="overflow-visible text-center"
-          >
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.2, duration: 0.5 }}
-              className="mb-6 inline-flex items-center gap-2 rounded-full border border-blue-200/50 bg-white/80 px-4 py-2 text-sm backdrop-blur-sm dark:border-blue-800/50 dark:bg-slate-900/80"
-            >
-              <Sparkles className="h-4 w-4 text-blue-500" />
-              <span className="text-slate-700 dark:text-slate-300">
-                Simplified Git commands with AI-generated tests
-              </span>
-            </motion.div>
-
-            <h1 className="mb-6 overflow-visible text-5xl font-bold tracking-tight leading-[1.2] md:text-7xl md:leading-[1.2] lg:text-8xl lg:leading-[1.2]">
-              <span className="block text-slate-900 dark:text-slate-100">
-                Ship <LineShadowText shadowColor="black">Faster</LineShadowText>{" "}
-                with
-              </span>
-              <AnimatedGradientText
-                className="block overflow-visible pb-2 md:pb-3 lg:pb-4 bg-gradient-to-r from-blue-600 via-indigo-600 to-cyan-500"
-                speed={0.8}
-              >
+      <header className="sticky top-0 z-40 border-b border-black/6 bg-[rgba(245,237,228,0.84)] backdrop-blur-xl">
+        <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
+          <a href="#" className="flex items-center gap-3">
+            <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-[var(--brand)] text-white shadow-[0_14px_30px_rgba(235,75,147,0.28)]">
+              <AnvilIcon className="h-5 w-5" />
+            </div>
+            <div>
+              <div className="text-lg font-semibold tracking-[-0.03em] text-[#12161d]">
                 Forge
-              </AnimatedGradientText>
-            </h1>
+              </div>
+              <div className="mono-label mt-0.5 text-[11px] text-muted-foreground">
+                RELEASE INFRASTRUCTURE
+              </div>
+            </div>
+          </a>
 
-            <p className="mx-auto mb-10 max-w-2xl text-lg leading-relaxed text-slate-600 md:text-xl dark:text-slate-400">
-              Don’t let Git commands or testing slow you down. Forge simplifies
-              your workflow by simplifying your Git commands and AI-generated
-              tests so you can ship at lightning speed.
-            </p>
+          <nav className="hidden items-center gap-8 md:flex">
+            {navItems.map((item) => (
+              <a
+                key={item.label}
+                href={item.href}
+                className="text-sm font-medium text-[#544c49] transition-colors hover:text-[var(--brand-deep)]"
+              >
+                {item.label}
+              </a>
+            ))}
+          </nav>
 
-            <div className="relative z-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
-              <motion.a
-                href="#get-started"
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                className="group relative flex cursor-pointer items-center gap-2 rounded-lg bg-gradient-to-r from-blue-600 to-indigo-600 px-8 py-3.5 text-white shadow-lg shadow-blue-500/25 transition-all hover:shadow-xl hover:shadow-blue-500/40"
-              >
-                Get Started
-                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-              </motion.a>
-              <motion.a
-                href="https://github.com/rayhaanfarooq/Forge"
-                target="_blank"
-                rel="noopener noreferrer"
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                className="group relative flex cursor-pointer items-center gap-2 rounded-lg bg-slate-900 px-6 py-3.5 text-white transition-all hover:bg-slate-800 dark:bg-slate-100 dark:text-slate-900 dark:hover:bg-slate-200"
-              >
-                <Github className="h-5 w-5" />
-                <span>GitHub</span>
-              </motion.a>
+          <div className="flex items-center gap-3">
+            <a
+              href="https://github.com/rayhaanfarooq/Forge"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hidden items-center rounded-full border border-[rgba(18,22,29,0.08)] bg-[rgba(255,248,243,0.75)] px-4 py-2 text-sm font-medium text-[#12161d] transition-colors hover:bg-white sm:inline-flex"
+            >
+              <Github className="mr-2 h-4 w-4" />
+              View GitHub
+            </a>
+            <a
+              href="#start"
+              className="inline-flex items-center gap-2 rounded-full bg-[var(--brand)] px-4 py-2 text-sm font-medium text-white shadow-[0_16px_36px_rgba(235,75,147,0.28)] transition-transform hover:-translate-y-0.5"
+            >
+              Get started
+              <ChevronRight className="h-4 w-4" />
+            </a>
+          </div>
+        </div>
+      </header>
+
+      <main>
+        <section className="px-4 pb-16 pt-12 sm:pb-20 sm:pt-16 lg:px-8 lg:pt-20">
+          <div className="mx-auto grid max-w-7xl items-center gap-14 lg:grid-cols-[1.02fr_0.98fr]">
+            <div className="max-w-3xl">
+              <div className="section-eyebrow">
+                Open source release infrastructure
+              </div>
+
+              <h1 className="mt-8 max-w-3xl text-balance text-5xl font-semibold tracking-[-0.06em] text-[#12161d] sm:text-6xl lg:text-[5.4rem] lg:leading-[0.96]">
+                Git workflows that feel faster, cleaner, and far more under
+                <span className="text-[var(--brand-deep)]"> control.</span>
+              </h1>
+
+              <p className="mt-6 max-w-2xl text-lg leading-8 text-[#4d5663] sm:text-xl">
+                Forge gives product teams a calmer release path with cleaner
+                branch handling, AI-assisted test drafting, and one focused
+                workflow from sync to ship.
+              </p>
+
+              <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+                <a
+                  href="https://github.com/rayhaanfarooq/Forge"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center gap-2 rounded-full bg-[var(--brand)] px-6 py-3 text-base font-medium text-white shadow-[0_18px_42px_rgba(235,75,147,0.26)] transition-transform hover:-translate-y-0.5"
+                >
+                  Explore on GitHub
+                  <ArrowRight className="h-4 w-4" />
+                </a>
+                <a
+                  href="#product"
+                  className="inline-flex items-center justify-center rounded-full border border-[rgba(18,22,29,0.09)] bg-[rgba(255,249,244,0.82)] px-6 py-3 text-base font-medium text-[#12161d] transition-colors hover:bg-white"
+                >
+                  See the product flow
+                </a>
+              </div>
+
+              <div className="mt-4 inline-flex items-center gap-2 rounded-full border border-[rgba(18,22,29,0.08)] bg-[rgba(255,250,246,0.82)] px-4 py-2 text-sm text-[#5c5552]">
+                <Github className="h-4 w-4 text-[var(--brand-deep)]" />
+                <span>
+                  Open source on GitHub. Contributions welcome.
+                </span>
+              </div>
+
+              <div className="mt-10 grid gap-4 sm:grid-cols-3">
+                {heroStats.map((stat) => (
+                  <div key={stat.value} className="surface-card rounded-[1.5rem] p-5">
+                    <p className="mono-label text-[11px] text-muted-foreground">
+                      {stat.label}
+                    </p>
+                    <p className="mt-3 text-2xl font-semibold tracking-[-0.04em] text-[#12161d]">
+                      {stat.value}
+                    </p>
+                    <p className="mt-2 text-sm leading-6 text-[#5a6470]">
+                      {stat.detail}
+                    </p>
+                  </div>
+                ))}
+              </div>
             </div>
 
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.5 }}
-              className="mt-6 flex items-center justify-center gap-2 text-sm text-slate-500 dark:text-slate-400"
-            >
-              <span>Open source</span>
-              <Heart className="h-4 w-4 fill-red-500 text-red-500" />
-              <span>Contributions welcome</span>
-            </motion.div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Features Section */}
-      <section id="features" className="relative px-4 py-24">
-        <GridPattern className="opacity-20 dark:opacity-10" />
-        <div className="container relative mx-auto max-w-6xl">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="mb-16 text-center"
-          >
-            <h2 className="mb-4 text-4xl font-bold md:text-5xl">
-              Why Forge Exists
-            </h2>
-            <p className="mx-auto max-w-2xl text-lg text-slate-600 dark:text-slate-400">
-              Built from experience at high-velocity environments like Ross
-              Video and Shopify, Forge addresses the pain points that slow
-              developers down.
-            </p>
-          </motion.div>
-
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {[
-              {
-                icon: GitMerge,
-                title: "No More Merge Conflicts",
-                description:
-                  "Automatic rebasing keeps your branches clean and in sync, eliminating manual conflict resolution.",
-                gradientFrom: "#2563eb",
-                gradientTo: "#3b82f6",
-              },
-              {
-                icon: TestTube,
-                title: "AI-Generated Tests",
-                description:
-                  "Tests are automatically generated based on your actual code changes, ensuring nothing is forgotten.",
-                gradientFrom: "#4f46e5",
-                gradientTo: "#6366f1",
-              },
-              {
-                icon: Zap,
-                title: "One Command Workflow",
-                description:
-                  "Sync, test, validate, commit, and push — all with a single command. Stay in flow.",
-                gradientFrom: "#0891b2",
-                gradientTo: "#06b6d4",
-              },
-              {
-                icon: Shield,
-                title: "Local-First",
-                description:
-                  "Everything runs locally. No cloud infrastructure or CI/CD overhead required.",
-                gradientFrom: "#1e40af",
-                gradientTo: "#2563eb",
-              },
-              {
-                icon: Code,
-                title: "Clean Git History",
-                description:
-                  "Enforces clean Git histories and test-first workflows automatically.",
-                gradientFrom: "#0284c7",
-                gradientTo: "#0ea5e9",
-              },
-              {
-                icon: Rocket,
-                title: "Ship Faster",
-                description:
-                  "Eliminate friction points and maintain quality at lightning speed.",
-                gradientFrom: "#4338ca",
-                gradientTo: "#6366f1",
-              },
-            ].map((feature, index) => (
-              <motion.div
-                key={feature.title}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1, duration: 0.5 }}
-              >
-                <div className="group relative h-full overflow-hidden rounded-xl border border-slate-200 bg-white/50 p-6 backdrop-blur-sm transition-all hover:border-blue-300 hover:shadow-lg hover:shadow-blue-500/10 dark:border-slate-800 dark:bg-slate-900/50 dark:hover:border-blue-700">
-                  <MagicCard
-                    className="h-full"
-                    gradientFrom={feature.gradientFrom}
-                    gradientTo={feature.gradientTo}
-                  >
-                    <div className="relative h-full p-6">
-                      <div className="mb-4 inline-flex rounded-lg bg-gradient-to-br from-blue-100 to-indigo-100 p-3 dark:from-blue-900/30 dark:to-indigo-900/30">
-                        <feature.icon className="h-6 w-6 text-blue-600 dark:text-blue-400" />
+            <div className="relative">
+              <div className="dashboard-shell rounded-[2rem] p-4 sm:p-5">
+                <div className="rounded-[1.7rem] border border-black/7 bg-white p-5 shadow-[0_30px_80px_rgba(17,23,31,0.08)] sm:p-6">
+                  <div className="flex flex-wrap items-start justify-between gap-4 border-b border-black/7 pb-5">
+                    <div>
+                      <div className="mono-label text-[11px] text-muted-foreground">
+                        RELEASE WORKSPACE
                       </div>
-                      <h3 className="mb-2 text-xl font-semibold text-slate-900 dark:text-slate-100">
-                        {feature.title}
-                      </h3>
-                      <p className="text-slate-600 dark:text-slate-400">
-                        {feature.description}
+                      <h2 className="mt-2 text-2xl font-semibold tracking-[-0.04em] text-[#12161d] sm:text-[2rem]">
+                        Faster shipping with less release drag
+                      </h2>
+                    </div>
+                    <div className="rounded-full bg-[var(--success-soft)] px-3 py-1.5 text-sm font-medium text-[var(--success-deep)]">
+                      Release ready
+                    </div>
+                  </div>
+
+                  <div className="mt-5 grid gap-3 sm:grid-cols-3">
+                    <div className="rounded-[1.35rem] border border-black/7 bg-[#1f181b] px-4 py-4 text-white">
+                      <div className="mono-label text-[11px] text-white/55">
+                        Merge prep
+                      </div>
+                      <div className="mt-2 text-3xl font-semibold tracking-[-0.05em]">
+                        92%
+                      </div>
+                      <p className="mt-2 text-sm leading-6 text-white/72">
+                        workflow handled before the final release step
                       </p>
                     </div>
-                  </MagicCard>
+                    <div className="rounded-[1.35rem] border border-black/7 bg-[#f5ede7] px-4 py-4">
+                      <div className="mono-label text-[11px] text-muted-foreground">
+                        Suggested tests
+                      </div>
+                      <div className="mt-2 text-3xl font-semibold tracking-[-0.05em] text-[#12161d]">
+                        08
+                      </div>
+                      <p className="mt-2 text-sm leading-6 text-[#5a6470]">
+                        focused coverage prompts created from the diff
+                      </p>
+                    </div>
+                    <div className="rounded-[1.35rem] border border-black/7 bg-[#f5ede7] px-4 py-4">
+                      <div className="mono-label text-[11px] text-muted-foreground">
+                        Branch state
+                      </div>
+                      <div className="mt-2 text-3xl font-semibold tracking-[-0.05em] text-[#12161d]">
+                        Synced
+                      </div>
+                      <p className="mt-2 text-sm leading-6 text-[#5a6470]">
+                        current branch aligned with latest main
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="mt-5 grid gap-4 lg:grid-cols-[1.08fr_0.92fr]">
+                    <div className="rounded-[1.5rem] border border-black/7 bg-[#f9f2eb] p-4">
+                      <div className="mono-label text-[11px] text-muted-foreground">
+                        Active workflow
+                      </div>
+                      <div className="mt-4 space-y-3">
+                        {releaseItems.map((item) => (
+                          <div
+                            key={item}
+                            className="flex items-center gap-3 rounded-2xl border border-black/6 bg-white px-4 py-3"
+                          >
+                            <CheckCircle2 className="h-4 w-4 shrink-0 text-[var(--success)]" />
+                            <span className="text-sm font-medium text-[#1f2933]">
+                              {item}
+                            </span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+
+                    <div className="space-y-4">
+                      <div className="rounded-[1.5rem] border border-black/7 bg-[#f5ede7] p-4">
+                        <div className="mono-label text-[11px] text-muted-foreground">
+                          Release note
+                        </div>
+                        <p className="mt-3 text-base leading-7 text-[#27313b]">
+                          Checkout refactor is merge-ready. Coverage suggestions
+                          center on totals, discounts, and empty-cart edge
+                          cases.
+                        </p>
+                      </div>
+
+                      <div className="rounded-[1.5rem] border border-black/7 bg-[#1f181b] p-4 text-white">
+                        <div className="mono-label text-[11px] text-white/55">
+                          Quality signal
+                        </div>
+                        <div className="mt-5 space-y-3">
+                          <div>
+                            <div className="flex items-center justify-between text-sm text-white/72">
+                              <span>Validation</span>
+                              <span>100%</span>
+                            </div>
+                            <div className="mt-2 h-2 rounded-full bg-white/10">
+                              <div className="h-2 w-full rounded-full bg-[var(--success)]" />
+                            </div>
+                          </div>
+                          <div>
+                            <div className="flex items-center justify-between text-sm text-white/72">
+                              <span>Coverage depth</span>
+                              <span>84%</span>
+                            </div>
+                            <div className="mt-2 h-2 rounded-full bg-white/10">
+                              <div className="h-2 w-[84%] rounded-full bg-[var(--success)]" />
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Comparison Section */}
-      <section className="relative px-4 py-24 bg-slate-50/50 dark:bg-slate-900/50">
-        <GridPattern className="opacity-20 dark:opacity-10" />
-        <div className="container relative mx-auto max-w-6xl">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="mb-16 text-center"
-          >
-            <h2 className="mb-4 text-4xl font-bold md:text-5xl">
-              Before vs. After
-            </h2>
-            <p className="mx-auto max-w-2xl text-lg text-slate-600 dark:text-slate-400">
-              See how Forge transforms your development workflow
-            </p>
-          </motion.div>
-
-          <div className="grid gap-8 md:grid-cols-2">
-            {/* Before */}
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-              className="relative rounded-2xl border border-red-200 bg-red-50/50 p-8 dark:border-red-900 dark:bg-red-950/20"
-            >
-              <BorderBeam colorFrom="#ef4444" colorTo="#dc2626" />
-              <div className="mb-4 flex items-center gap-2">
-                <XCircle className="h-6 w-6 text-red-600" />
-                <h3 className="text-2xl font-bold text-red-900 dark:text-red-100">
-                  Before Forge
-                </h3>
               </div>
-              <ul className="space-y-3">
-                {[
-                  "Manually create branches",
-                  "Manually rebase and resolve conflicts",
-                  "Write tests after the fact (or skip them)",
-                  "Forget to push or push broken tests",
-                  "Hours wasted on Git workflow",
-                ].map((item) => (
-                  <li
-                    key={item}
-                    className="flex items-start gap-2 text-slate-700 dark:text-slate-300"
-                  >
-                    <XCircle className="mt-0.5 h-5 w-5 shrink-0 text-red-500" />
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
-            </motion.div>
 
-            {/* After */}
-            <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-              className="relative rounded-2xl border border-green-200 bg-green-50/50 p-8 dark:border-green-900 dark:bg-green-950/20"
-            >
-              <BorderBeam colorFrom="#10b981" colorTo="#059669" />
-              <div className="mb-4 flex items-center gap-2">
-                <CheckCircle2 className="h-6 w-6 text-green-600" />
-                <h3 className="text-2xl font-bold text-green-900 dark:text-green-100">
-                  With Forge
-                </h3>
+              <div className="surface-card absolute -bottom-5 left-8 hidden rounded-full border-[rgba(45,164,78,0.18)] bg-[var(--success-soft)] px-4 py-2.5 text-sm font-medium text-[var(--success-deep)] shadow-[0_20px_45px_rgba(17,23,31,0.08)] lg:block">
+                Cleaner release path
               </div>
-              <ul className="space-y-3">
-                {[
-                  "One command handles rebase + tests + validation",
-                  "Tests generated based on actual diffs",
-                  "Branches stay clean and in sync",
-                  "Safer commits by default",
-                  "Ship faster with confidence",
-                ].map((item) => (
-                  <li
-                    key={item}
-                    className="flex items-start gap-2 text-slate-700 dark:text-slate-300"
-                  >
-                    <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-green-500" />
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
-            </motion.div>
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Who It's For Section */}
-      <section className="relative px-4 py-24">
-        <GridPattern className="opacity-20 dark:opacity-10" />
-        <div className="container relative mx-auto max-w-6xl">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="mb-16 text-center"
-          >
-            <h2 className="mb-4 text-4xl font-bold md:text-5xl">
-              Who Forge Is For
-            </h2>
-            <p className="mx-auto max-w-2xl text-lg text-slate-600 dark:text-slate-400">
-              Designed for developers who value speed, quality, and clean
-              workflows
-            </p>
-          </motion.div>
-
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-            {[
-              {
-                title: "Solo Developers",
-                description: "Guardrails without heavy CI overhead",
-              },
-              {
-                title: "Teams",
-                description:
-                  "Enforce clean Git histories and test-first workflows",
-              },
-              {
-                title: "Hackathons",
-                description: "Speed + correctness matter",
-              },
-              {
-                title: "Startups",
-                description: "Move fast without breaking things",
-              },
-            ].map((item, index) => (
-              <motion.div
-                key={item.title}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1, duration: 0.5 }}
-                className="group rounded-xl border border-slate-200 bg-white/80 p-6 backdrop-blur-sm transition-all hover:border-blue-300 hover:bg-white hover:shadow-lg hover:shadow-blue-500/5 dark:border-slate-800 dark:bg-slate-900/80 dark:hover:border-blue-700 dark:hover:bg-slate-900"
+        <section className="border-y border-black/6 bg-[rgba(250,244,238,0.86)] px-4 py-5 lg:px-8">
+          <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-center gap-3 text-sm text-[#58616c]">
+            {proofPoints.map((point) => (
+              <div
+                key={point}
+                className="rounded-full border border-black/7 bg-[#fbf4ee] px-4 py-2"
               >
-                <h3 className="mb-2 text-xl font-semibold text-slate-900 dark:text-slate-100">
-                  {item.title}
-                </h3>
-                <p className="text-slate-600 dark:text-slate-400">
-                  {item.description}
-                </p>
-              </motion.div>
+                {point}
+              </div>
             ))}
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Quick Start Section */}
-      <section id="get-started" className="relative px-4 py-24">
-        <GridPattern className="opacity-20 dark:opacity-10" />
-        <div className="container relative mx-auto max-w-4xl">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="relative overflow-hidden rounded-2xl border border-blue-200/50 bg-gradient-to-br from-blue-50/80 via-indigo-50/50 to-cyan-50/50 p-8 shadow-xl shadow-blue-500/5 md:p-12 dark:border-blue-800/50 dark:from-blue-950/30 dark:via-indigo-950/20 dark:to-cyan-950/20"
-          >
-            <BorderBeam colorFrom="#2563eb" colorTo="#6366f1" duration={8} />
-            <div className="relative">
-              <div className="mb-6 flex items-center gap-3">
-                <div className="rounded-lg bg-blue-100 p-2 dark:bg-blue-900/30">
-                  <Terminal className="h-6 w-6 text-blue-600 dark:text-blue-400" />
+        <section id="product" className="px-4 py-20 sm:py-24 lg:px-8">
+          <div className="mx-auto max-w-7xl">
+            <div className="max-w-3xl">
+              <div className="section-eyebrow">Why teams switch to Forge</div>
+              <h2 className="mt-6 max-w-3xl text-balance text-4xl font-semibold tracking-[-0.05em] text-[#12161d] sm:text-[3.35rem] sm:leading-[1.02]">
+                A release system shaped like product software, not terminal
+                folklore.
+              </h2>
+              <p className="mt-5 max-w-2xl text-lg leading-8 text-[#55606c]">
+                The visual direction is cleaner, but the real upgrade is
+                operational. Forge reduces friction where modern engineering
+                teams feel it most: Git overhead, fragmented quality checks, and
+                merge anxiety.
+              </p>
+            </div>
+
+            <div className="mt-12 grid gap-5 lg:grid-cols-3">
+              {valueCards.map((card) => (
+                <article
+                  key={card.title}
+                  className="surface-card rounded-[1.75rem] p-6 sm:p-7"
+                >
+                  <h3 className="text-2xl font-semibold tracking-[-0.04em] text-[#12161d]">
+                    {card.title}
+                  </h3>
+                  <p className="mt-4 text-base leading-7 text-[#5a6470]">
+                    {card.description}
+                  </p>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section
+          id="workflow"
+          className="bg-[#1b1517] px-4 py-20 text-white sm:py-24 lg:px-8"
+        >
+          <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.94fr_1.06fr]">
+            <div className="max-w-xl">
+              <div className="section-eyebrow border-white/10 bg-white/5 text-white/75">
+                Workflow
+              </div>
+              <h2 className="mt-6 text-balance text-4xl font-semibold tracking-[-0.05em] text-white sm:text-[3.2rem] sm:leading-[1.02]">
+                Every release step, tightened into one operating rhythm.
+              </h2>
+              <p className="mt-5 text-lg leading-8 text-white/68">
+                Borrow the clarity of modern finance software: one screen, clear
+                states, and just enough accent color to guide attention instead
+                of decorating the interface.
+              </p>
+
+              <div className="mt-8 rounded-[1.9rem] border border-white/10 bg-white/5 p-6">
+                <div className="mono-label text-[11px] text-white/45">
+                  Example flow
                 </div>
-                <h2 className="text-3xl font-bold text-slate-900 dark:text-slate-100 md:text-4xl">
-                  Quick Start
+                <div className="mt-4 space-y-3 text-sm text-white/80">
+                  <div className="rounded-2xl bg-white/5 px-4 py-3">
+                    <span className="mono-label text-[11px] text-[var(--brand-light)]">
+                      01
+                    </span>
+                    <p className="mt-2 font-medium text-white">
+                      `forge sync` brings the branch current
+                    </p>
+                  </div>
+                  <div className="rounded-2xl bg-white/5 px-4 py-3">
+                    <span className="mono-label text-[11px] text-[var(--brand-light)]">
+                      02
+                    </span>
+                    <p className="mt-2 font-medium text-white">
+                      `forge test --ai` drafts focused coverage
+                    </p>
+                  </div>
+                  <div className="rounded-2xl bg-white/5 px-4 py-3">
+                    <span className="mono-label text-[11px] text-[var(--brand-light)]">
+                      03
+                    </span>
+                    <p className="mt-2 font-medium text-white">
+                      `forge ship` packages validation and release context
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="space-y-4">
+              {workflowSteps.map((step, index) => (
+                <article
+                  key={step.title}
+                  className="rounded-[1.75rem] border border-white/10 bg-white/5 p-6"
+                >
+                  <div className="mono-label text-[11px] text-[var(--brand-light)]">
+                    STEP 0{index + 1}
+                  </div>
+                  <h3 className="mt-3 text-2xl font-semibold tracking-[-0.04em] text-white">
+                    {step.title}
+                  </h3>
+                  <p className="mt-3 max-w-2xl text-base leading-7 text-white/68">
+                    {step.description}
+                  </p>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section id="platform" className="px-4 py-20 sm:py-24 lg:px-8">
+          <div className="mx-auto max-w-7xl">
+            <div className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-end">
+              <div className="max-w-2xl">
+                <div className="section-eyebrow">Platform</div>
+                <h2 className="mt-6 text-balance text-4xl font-semibold tracking-[-0.05em] text-[#12161d] sm:text-[3.2rem] sm:leading-[1.02]">
+                  Modern release tooling, without the visual noise.
                 </h2>
               </div>
-
-              <div className="space-y-3 rounded-xl bg-slate-900 p-6 font-mono text-sm text-slate-100 shadow-lg">
-                <div className="flex items-center gap-2">
-                  <span className="text-green-400">$</span>
-                  <span className="text-blue-400">pip install -e .</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <span className="text-green-400">$</span>
-                  <span className="text-blue-400">forge init</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <span className="text-green-400">$</span>
-                  <span className="text-blue-400">
-                    forge branch feature/my-change
-                  </span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <span className="text-green-400">$</span>
-                  <span className="text-blue-400">forge submit</span>
-                </div>
-              </div>
-
-              <p className="mt-6 text-slate-600 dark:text-slate-400">
-                That's it! Forge handles rebasing, test generation, validation,
-                commit, and push — all automatically.
+              <p className="max-w-2xl text-lg leading-8 text-[#55606c]">
+                The interface stays neutral, the hierarchy stays strong, and
+                the hot-pink accent only appears where depth or status matters.
+                That keeps Forge confident, structured, and unmistakably its
+                own.
               </p>
             </div>
-          </motion.div>
-        </div>
-      </section>
 
-      {/* Footer */}
-      <footer className="border-t border-slate-200 px-4 py-12 dark:border-slate-800">
-        <div className="container mx-auto max-w-6xl">
-          <div className="flex flex-col items-center justify-between gap-4 md:flex-row">
-            <div>
-              <h3 className="mb-2 text-2xl font-bold">Forge</h3>
-              <p className="text-slate-600 dark:text-slate-400">
-                Opinionated Git workflows with AI-generated tests
-              </p>
+            <div className="mt-12 grid gap-5 md:grid-cols-2">
+              {platformCards.map((card) => {
+                const Icon = card.icon;
+
+                return (
+                  <article
+                    key={card.title}
+                    className="surface-card rounded-[1.75rem] p-6 sm:p-7"
+                  >
+                    <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-[var(--brand)] text-white shadow-[0_14px_32px_rgba(235,75,147,0.22)]">
+                      <Icon className="h-5 w-5" />
+                    </div>
+                    <h3 className="mt-5 text-2xl font-semibold tracking-[-0.04em] text-[#12161d]">
+                      {card.title}
+                    </h3>
+                    <p className="mt-3 text-base leading-7 text-[#5a6470]">
+                      {card.description}
+                    </p>
+                  </article>
+                );
+              })}
             </div>
-            <div className="flex flex-wrap items-center gap-4">
-              <motion.a
-                href="https://github.com/rayhaanfarooq/Forge"
-                target="_blank"
-                rel="noopener noreferrer"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="flex items-center gap-2 rounded-lg bg-slate-900 px-4 py-2 text-white transition-all hover:bg-slate-800 dark:bg-slate-100 dark:text-slate-900 dark:hover:bg-slate-200"
-              >
-                <Github className="h-5 w-5" />
-                <span>GitHub</span>
-              </motion.a>
-              <div className="flex items-center gap-2 text-sm text-slate-500 dark:text-slate-400">
-                <Heart className="h-4 w-4 fill-red-500 text-red-500" />
-                <span>Open source • Contributions welcome</span>
+          </div>
+        </section>
+
+        <section id="start" className="px-4 pb-20 pt-4 sm:pb-24 lg:px-8">
+          <div className="mx-auto max-w-7xl">
+            <div className="rounded-[2rem] border border-black/8 bg-[#fffaf5] p-8 shadow-[0_28px_80px_rgba(17,23,31,0.06)] sm:p-10 lg:p-12">
+              <div className="grid gap-8 lg:grid-cols-[1fr_auto] lg:items-end">
+                <div className="max-w-3xl">
+                  <div className="section-eyebrow">Start with Forge</div>
+                  <h2 className="mt-6 text-balance text-4xl font-semibold tracking-[-0.05em] text-[#12161d] sm:text-[3.2rem] sm:leading-[1.02]">
+                    Give your release flow a product-grade operating surface.
+                  </h2>
+                  <p className="mt-5 text-lg leading-8 text-[#55606c]">
+                    Explore the repo, try the workflow, and move your team
+                    toward a release process that feels more like software and
+                    less like cleanup.
+                  </p>
+                </div>
+
+                <div className="flex flex-col gap-3 sm:flex-row lg:flex-col">
+                  <a
+                    href="https://github.com/rayhaanfarooq/Forge"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center justify-center gap-2 rounded-full bg-[var(--brand)] px-6 py-3 text-base font-medium text-white shadow-[0_18px_42px_rgba(235,75,147,0.26)] transition-transform hover:-translate-y-0.5"
+                  >
+                    Start on GitHub
+                    <Github className="h-4 w-4" />
+                  </a>
+                  <a
+                    href="#"
+                    className="inline-flex items-center justify-center rounded-full border border-black/10 px-6 py-3 text-base font-medium text-[#12161d] transition-colors hover:bg-black/[0.03]"
+                  >
+                    Back to top
+                  </a>
+                </div>
               </div>
             </div>
           </div>
-          <div className="mt-8 border-t border-slate-200 pt-8 text-center text-sm text-slate-600 dark:border-slate-800 dark:text-slate-400">
-            <p>© 2024 Forge. Built for developers who hate rebasing.</p>
-            <p className="mt-2">
+        </section>
+      </main>
+
+      <footer className="border-t border-black/6 px-4 py-8 lg:px-8">
+        <div className="mx-auto flex max-w-7xl flex-col gap-5 text-sm text-[#65707b] md:flex-row md:items-center md:justify-between">
+          <div className="flex items-center gap-3">
+            <div className="flex h-9 w-9 items-center justify-center rounded-2xl bg-[var(--brand)] text-white shadow-[0_12px_26px_rgba(235,75,147,0.24)]">
+              <AnvilIcon className="h-4.5 w-4.5" />
+            </div>
+            <div>
+              <p className="font-medium text-[#12161d]">Forge</p>
+              <p>Git workflows with AI-assisted release preparation.</p>
+            </div>
+          </div>
+
+          <div className="flex flex-wrap items-center gap-4">
+            {navItems.map((item) => (
               <a
-                href="https://github.com/rayhaanfarooq/Forge"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-1 text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300"
+                key={item.label}
+                href={item.href}
+                className="transition-colors hover:text-[var(--brand-deep)]"
               >
-                <Github className="h-4 w-4" />
-                Star us on GitHub
+                {item.label}
               </a>
-            </p>
+            ))}
           </div>
         </div>
       </footer>
